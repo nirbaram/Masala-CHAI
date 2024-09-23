@@ -14,6 +14,7 @@ Accurate netlist generation from schematics has been a major hurdle in automatin
 - `./sample-images/` : Folder containing sample images to run the Auto-SPICE netlist generator.
 - `./trained_checkpoints/` : Contains checkpoint file for YOLOv8 model after training.
 - `./utils/` : Supporting scripts for various components of the Auto-SPICE pipeline.
+- `./Dataset/` : Folder containing dataset of the images with schematics.
 - `main.py` : Main script that runs the entire pipeline.
 - `run.py` : Script to be called for generating netlists for sample images.
 - `environment.yml`: Requirements file for creating conda environment
