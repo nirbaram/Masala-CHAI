@@ -35,7 +35,7 @@ Accurate netlist generation from schematics has been a major hurdle in automatin
    conda env create -f environment.yml
 3. **Activate the Conda environment:**
 	```bash
-   conda env create -f environment.yml
+   conda activate autospice_env
 4. **Add sample images:**
 	Place your sample images in the `./sample-images/` folder.
 5. **Run the pipeline:**
