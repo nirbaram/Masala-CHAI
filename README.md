@@ -9,7 +9,7 @@ Accurate netlist generation from schematics has been a major hurdle in automatin
 
 ## File and Folder Description
 
-- `./hough/` : Folder containing scripts to use Hough Transform for net detection.
+- `./hough/` : Folder containing scripts to use Hough Transform for net detection. Due to large size of the files, download the hough/ content from this Google Drive link: https://drive.google.com/file/d/1mTwWWSMsYwhJW-GfKKVm21Lm5lVtMJ1y/view?usp=sharing
 - `./models/` : Folder containing scripts for YOLOv8-based circuit component detection.
 - `./sample-images/` : Folder containing sample images to run the Auto-SPICE netlist generator.
 - `./trained_checkpoints/` : Contains checkpoint file for YOLOv8 model after training.
