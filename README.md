@@ -74,8 +74,8 @@ We also provide a helpful visualization of model output using a jupyer notebook:
 If you use Auto-SPICE in your research or project, please cite it using the following BibTeX entry:
 
 ```bibtex
-@misc{autospice,
-      title={Auto-SPICE: Leveraging LLMs for Dataset Creation via Automated SPICE Netlist Extraction from Analog Circuit Diagrams}, 
+@misc{bhandari2024masalachailargescalespicenetlist,
+      title={Masala-CHAI: A Large-Scale SPICE Netlist Dataset for Analog Circuits by Harnessing AI}, 
       author={Jitendra Bhandari and Vineet Bhat and Yuheng He and Siddharth Garg and Hamed Rahmani and Ramesh Karri},
       year={2024},
       eprint={2411.14299},
