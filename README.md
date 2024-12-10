@@ -7,6 +7,8 @@ We identify key bottlenecks in automating analog circuit design and evaluate the
 
 Accurate netlist generation from schematics has been a major hurdle in automating analog design, and our approach demonstrates significant performance improvements. Tested on approximately ~1,000 schematic designs of varying complexity, our flow shows promising results. We plan to open-source the workflow to the community for further development.
 
+For full paper, use this link: https://arxiv.org/abs/2411.14299
+
 ## File and Folder Description
 
 - `./hough/` : Folder containing scripts to use Hough Transform for net detection. Due to large size of the files, download the hough/ content from this Google Drive link: https://drive.google.com/file/d/1mTwWWSMsYwhJW-GfKKVm21Lm5lVtMJ1y/view?usp=sharing
