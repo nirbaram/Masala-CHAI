@@ -48,6 +48,11 @@ For full paper, use this link: https://arxiv.org/abs/2411.14299
 	- `--tgt` : Output directory path for the generated netlists.
 	- `--api_key` : Your OpenAI API key for using GPT-4
 
+## Steps to Run circuit detection using Molmo (https://huggingface.co/allenai/Molmo-72B-0924)
+
+1. **Ensure the availability of 4 A100 40 GB GPUs**
+2. **Run cells in molmo-objdetection.ipynb for loading a sample screenshot of a textbook page and run circuit detection**
+
 ## Output Files Description
 
 For each sample circuit, the output consists of a number of files to help the user understand the output of various components in the pipeline:
