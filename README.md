@@ -1,11 +1,7 @@
-# Auto-SPICE -- A Large Scale SPICE Netlist Dataset via Automated Netlist Extraction from Analog Circuit Diagrams
+# Masala-CHAI: A Large-Scale SPICE Netlist Dataset for Analog Circuits by Harnessing AI
 
 ## Abstract
-This work explores the use of Large Language Model (LLM) tools for automating netlist generation in analog circuits—one of the long-standing frontiers in circuit design automation. Analog circuit design requires careful attention to architecture, component selection, sizing, and connectivity, typically gained through years of experience. Automating this process could accelerate both design and verification, reduce dependence on specialized expertise, lower costs, and improve performance.
-
-We identify key bottlenecks in automating analog circuit design and evaluate the multi-modal capabilities of state-of-the-art LLMs, particularly GPT-4o, to address these challenges. To overcome current limitations, we propose a workflow consisting of three steps: preprocessing, prompt tuning, and netlist verification. This workflow aims to create an end-to-end Simulation Program with Integrated Circuit Emphasis (SPICE) netlist generator from circuit schematic images.
-
-Accurate netlist generation from schematics has been a major hurdle in automating analog design, and our approach demonstrates significant performance improvements. Tested on approximately ~1,000 schematic designs of varying complexity, our flow shows promising results. We plan to open-source the workflow to the community for further development.
+Masala-CHAI is the first fully automated framework leveraging large language models (LLMs) to generate Simulation Programs with Integrated Circuit Emphasis (SPICE) netlists. It addresses a long-standing challenge in automating netlist generation for analog circuits within circuit design automation. Automating this workflow could accelerate the creation of finetuned LLMs for analog circuit design and verification. We identify key challenges in this automation and evaluate the multi-modal capabilities of state-of-the-art LLMs, particularly GPT-4, to address these issues. We propose a three-step workflow to overcome current limitations: labeling analog circuits, prompt tuning, and netlist verification. This approach aims to create an end-to-end SPICE netlist generator from circuit schematic images, tackling the long-standing hurdle of accurate netlist generation. Our framework demonstrates significant performance improvements, tested on approximately 2,100 schematics of varying complexity. We open-source this solution for community-driven development.
 
 For full paper, use this link: https://arxiv.org/abs/2411.14299
 
