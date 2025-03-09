@@ -36,5 +36,6 @@ wheels/
 Thumbs.db
 
 # Project specific
-sample-output/
+/sample-output/
+/sample-output/**
 *.mat
