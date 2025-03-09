@@ -60,6 +60,8 @@ def annotate_bounding_boxes(image_path, predictions):
     # Iterate over the predictions
     for i, prediction in enumerate(predictions):
         x1, y1, x2, y2, score, class_id = prediction
+        # downaload score from cuda 
+        score = score.cpu().numpy()
         class_id = int(class_id)
         label = names[class_id]
 
@@ -107,7 +109,7 @@ def annotate_bounding_boxes(image_path, predictions):
 def comp_detection(image_path):
 
     # Load the pretrained YOLO model
-    model = YOLO("/home/jb7410/AnalogLLM/Yolov8/best.pt")
+    model = YOLO("trained_checkpoints/yolov8_best.pt")
 
     if not os.path.exists(image_path):
             print(f"Error: The image {image_path} does not exist.")

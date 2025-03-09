@@ -1,5 +1,5 @@
 import numpy as np
-import keras_ocr
+import easyocr
 import cv2
 
 # Function to inpaint the text
@@ -32,14 +32,26 @@ def inpaint_text(image, pipeline):
 # Class to handle text removal from images
 class TextRemover:
     def __init__(self):
-        self.pipeline = keras_ocr.pipeline.Pipeline()
+        self.reader = easyocr.Reader(['en'])
 
     def remove_text(self, img_path):
         # Read the image
-        img = keras_ocr.tools.read(img_path)
+        img = cv2.imread(img_path)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
         
-        # Inpaint the image to remove text
-        img_text_removed = inpaint_text(img, self.pipeline)
+        # Detect text
+        results = self.reader.readtext(img)
         
-        return img_text_removed
+        # Create mask for inpainting
+        mask = np.zeros(img.shape[:2], dtype="uint8")
+        
+        # Draw detected text regions on mask
+        for (bbox, text, prob) in results:
+            points = np.array([[int(x), int(y)] for x, y in bbox])
+            cv2.fillPoly(mask, [points], 255)
+        
+        # Inpaint
+        inpainted_img = cv2.inpaint(img, mask, 7, cv2.INPAINT_NS)
+        
+        return inpainted_img
 
