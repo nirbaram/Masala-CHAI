@@ -8,6 +8,23 @@ from openai import OpenAI
 import base64
 import re
 import json
+import torch
+
+if torch.cuda.is_available():
+    device = torch.device("cuda")
+    print("Using CUDA device")
+elif hasattr(torch.backends, 'mps') and torch.backends.mps.is_available():
+    device = torch.device("mps")
+    print("Using MPS device")
+else:
+    device = torch.device("cpu")
+    print("Using CPU with Intel optimizations where possible")
+    # Basic CPU optimizations
+    try:
+        torch.set_num_threads(os.cpu_count())
+        print(f"PyTorch using {torch.get_num_threads()} CPU threads")
+    except:
+        print("Could not optimize thread count")
 
 def run_gpt(this_messages, this_model="gpt-3.5-turbo",api_key="abc"):  # push to gpt
     client = OpenAI(
