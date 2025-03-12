@@ -10,6 +10,10 @@ import base64
 import re
 import json
 import torch
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 if torch.cuda.is_available():
     device = torch.device("cuda")
@@ -405,8 +409,12 @@ if __name__ == '__main__':
     parser.add_argument('--tgt', type=str, required=True, help="Path to the output directory")
     parser.add_argument('--provider', type=str, default="openai", choices=["openai", "anthropic"], help="AI provider to use (openai or anthropic)")
     parser.add_argument('--model', type=str, help="Model name to use (defaults to gpt-4o for OpenAI, claude-3-opus-20240229 for Anthropic)")
-    parser.add_argument('--openai_api_key', type=str, required=True, help="API Key for the selected provider")
-    parser.add_argument('--anthropic_api_key', type=str, required=True, help="API Key for the selected provider")
+    parser.add_argument('--openai_api_key', type=str, 
+                        default=os.getenv('OPENAI_API_KEY'), 
+                        help="API Key for OpenAI (defaults to OPENAI_API_KEY env variable)")
+    parser.add_argument('--anthropic_api_key', type=str, 
+                        default=os.getenv('ANTHROPIC_API_KEY'), 
+                        help="API Key for Anthropic (defaults to ANTHROPIC_API_KEY env variable)")
     
     args = parser.parse_args()
     directory_path = args.src
