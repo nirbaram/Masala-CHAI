@@ -41,3 +41,6 @@ Thumbs.db
 *.mat
 /sample-images/
 /sample-images/**
+
+# environment variables
+.env
