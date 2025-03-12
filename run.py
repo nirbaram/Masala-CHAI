@@ -9,6 +9,10 @@ import base64
 import re
 import json
 import torch
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 if torch.cuda.is_available():
     device = torch.device("cuda")
@@ -26,17 +30,17 @@ else:
     except:
         print("Could not optimize thread count")
 
-def run_gpt(this_messages, this_model="gpt-3.5-turbo",api_key="abc"):  # push to gpt
-    client = OpenAI(
-    api_key=api_key, 
-    )
-    chat_completion = client.chat.completions.create(messages=this_messages,model=this_model)
+def run_gpt(this_messages, this_model="gpt-3.5-turbo", api_key=None):  # push to gpt
+    if api_key is None:
+        api_key = os.getenv('OPENAI_API_KEY')
+    client = OpenAI(api_key=api_key)
+    chat_completion = client.chat.completions.create(messages=this_messages, model=this_model)
     return chat_completion
 
 
 def gpt_image_oneshot(image_link1, image_link2, new_prompt="This image contains some schematic of the analog circuit. Please respond with a question for which the answer is the schematic on this page.",
         role="You are an expert in analog design. Your task is to provide the spice netlist for the image provided. You have to follow the instructions provided strictly.",
-        retry=2, verbose=True,api_key="abc"):
+        retry=2, verbose=True,api_key=None):
     
     # "This image contains a block of Verilog code and text relating to it. "+...
     new_content = [{"type": "text", "text": new_prompt},
@@ -74,7 +78,7 @@ ask_question = "This image contains some analog circuit either schematic or spic
 
 ask_metric = "This image contains some analog circuit either schematic or spice code on it. Please give the key metrics related to the circuits."
 
-def extract_code(image_path1, image_path2, verbose=True,api_key="abc"):
+def extract_code(image_path1, image_path2, verbose=True,api_key=None):
     
     """ takes in the link of a local image and gets information about code on it """
     base64_image = encode_image(image_path1)
@@ -113,7 +117,7 @@ def save_description(description, save_path):
         for line in description:
             file.write(f"{line}\n")
 
-def process_image(image_path, output_dir,api_key):
+def process_image(image_path, output_dir,api_key=None):
     """
     Process a single image and save the results in the output directory.
     """
@@ -161,7 +165,7 @@ def process_image(image_path, output_dir,api_key):
 
     print(f"Results saved in {image_output_dir}")
 
-def app(directory_path,target_path,api_key):
+def app(directory_path,target_path,api_key=None):
     """
     Function to showcase the implementation and save outputs for each image in a directory.
     """
